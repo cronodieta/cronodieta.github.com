@@ -1,4 +1,75 @@
+/* STYLE */
+#wrapper {
+  overflow: hidden;
+  margin-top: 0px;
+  margin-left: 0px;
+}
+#orologio {
+  font-family: Helvetica, arial, sans-serif;
+  position: fixed;
+  top: 5%;
+  left: 10%;
+  padding: 24px;
+  background: #FFF;
+}
+#face { 
+  
+}
+.container {
+  overflow: hidden;
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  margin-top: 0px;
+  margin-left: 0px;
+}
+.container h3 {
+  width: 600px;
+  margin: 0 auto;
+}
+#colazione { top: 0%; }
+#pranzo { top: 100%; }
+#merenda { top: 200%; }
+#cena { top: 300%; }
 
+ul {
+  padding: 0 24px 0 0;
+  list-style: none;
+}
+li {
+  padding: 6px 0;
+  border-bottom: 1px dotted #ccc;
+}
+
+/* CONTENUTO */
+.consigli {
+  width: 600px;
+  margin: 0 auto;
+}
+.sinistra {
+  width: 50%;
+  float: left;
+}
+.destra {
+  width: 50%;
+  float: right;
+}
+.sinistra p, .destra p {
+  padding-right: 24px;
+}
+.verde.scuro {
+  color: #629546;
+}
+.verde {
+  color: #89da5c;
+}
+.rosso.scuro {
+  color: #902424;
+}
+.rosso {
+  color: #ec6e6e;
+}
 
 /* COMING SOON */
 .comingsoon-container {
@@ -7,11 +78,14 @@
   text-align: center;
 }
 
-.comingsoon-image {
+.image {
   width: 400px;
-  height: 255px;
+  height: 200px;
+  margin: 0 auto; 
+}
+.image.colazione {
   background: url('../img/colazione.png') no-repeat;
-  margin: 0 auto;
+  background-size: contain;
 }
 .comingsoon-p {
 }
