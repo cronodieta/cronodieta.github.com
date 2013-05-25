@@ -8,30 +8,189 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title></title>
   <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/cronodieta.css">
+  <link rel="stylesheet" href="css/cronodieta-mobile.css">
   <link href='http://fonts.googleapis.com/css?family=Arbutus+Slab|Archivo+Black' rel='stylesheet' type='text/css'>
   <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  <SCRIPT LANGUAGE="JavaScript">
+      var timerID = null;
+      var timerRunning = false;
+      var colazione = false;
+      var pranzo = false;
+      var merenda = false;
+      var cena = false;
+
+      function stopclock() {
+
+        if(timerRunning)
+          clearTimeout(timerID);
+        timerRunning = false;
+
+      }
+      function showtime() {
+
+        // Get the current time
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds()
+        var hourValue = "" + ((hours > 24) ? hours - 24 : hours)
+
+        if(hourValue == "0")
+          hourValue = 24;
+
+        hourValue += ((minutes < 10) ? " : 0" : " : ") + minutes;
+        hourValue += ((seconds < 10) ? " : 0" : " : ") + seconds;
+
+        document.getElementById('face').innerHTML = hourValue ;
+
+        timerID = setTimeout("showtime()", 1000);
+        timerRunning = true;
+
+        if(hours > 6 && hours < 11)
+          document.getElementById('orario').innerHTML = "colazione" ;
+          cena = false;
+          colazione = true;
+          pranzo = false;
+          merenda = false;
+
+        if(hours >= 12 && hours < 16)
+          document.getElementById('orario').innerHTML = "pranzo" ;
+          cena = false;
+          colazione = false;
+          pranzo = true;
+          merenda = false;
+
+        if(hours >= 16 && hours < 19)
+          document.getElementById('orario').innerHTML = "merenda" ;
+          cena = false;
+          colazione = false;
+          pranzo = false;
+          merenda = true;
+
+        if(hours >= 19 && hours < 21)
+          document.getElementById('orario').innerHTML = "cena" ;
+          cena = true;
+          colazione = false;
+          pranzo = false;
+          merenda = false;
+      }
+      if(colazione=true)
+        window.location.hash="cena"
+      if(pranzo=true)
+        window.location.hash="pranzo"
+      if(pranzo=true)
+        window.location.hash="merenda"
+      if(pranzo=true)
+        window.location.hash="cena"
+
+      function startclock() {
+
+        showtime();
+      }
+
+    </SCRIPT>
   </head>
-  <body>
+  <body onLoad="startclock()">
     <!--[if lt IE 7]>
         <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="comingsoon-container">
-      <div class="comingsoon-image">
+     <div id="wrapper">
+      <div id="orologio">
+        <div id="face" value=""></div>
+        <hr />
+        <h2 id="orario"></h2>
       </div>
-      <h1>La Cronodieta</h1>
-      <hr />
-      <p>Dieta basata sui principi della cronobiologia,<br> la scienza che studia i ritmi biologici.</p>
-    </div>
+      <!-- COLAZIONE -->
+      <div class="container" id="colazione">
+        <div class="image colazione">
+        </div>
+        <h3><i>In questa dieta la colazione assume la maggiore importanza. È da questo pasto che dipenderanno i ritmi alimentari della giornata.</i></h3>
+        <div class="consigli">
+          <hr />
+          <div class="sinistra">
+            <h3 class="verde scuro">Si</h3>
+            <p class="verde">Dieta basata sui principi della cronobiologia, la scienza che studia i ritmi biologici.</p>
+            <ul>
+              <li>alimento 1</li>
+              <li>alimento 2</li>
+              <li>alimento 3</li>
+            </ul>
+          </div>
+          <div class="destra">
+            <h3 class="rosso scuro">No</h3>
+            <p class="rosso">Dieta basata sui principi della cronobiologia, la scienza che studia i ritmi biologici.</p>
+            <ul>
+              <li>alimento 1</li>
+              <li>alimento 2</li>
+              <li>alimento 3</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
+      <!-- PRANZO -->
+      <div class="container" id="pranzo">
+        <div class="image colazione">
+        </div>
+        <h3>Per il pranzo di mezzogiorno gli alimenti importanti sono i carboidrati ad assimilazione lenta...</h3>
+        <div class="consigli">
+          <hr />
+          <div class="sinistra">
+            <h4>Si</h4>
+            <p>Dieta basata sui principi della cronobiologia, la scienza che studia i ritmi biologici.</p>
+          </div>
+          <div class="destra">
+            <h4>No</h4>
+            <p>Dieta basata sui principi della cronobiologia, la scienza che studia i ritmi biologici.</p>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- MERENDA -->
+      <div class="container" id="merenda">
+        <div class="image colazione">
+        </div>
+        <h3><i>La merenda è importante e sarà consumata tre o quattro ore dopo il pranzo di pomeriggio.</i></h3>
+        <div class="consigli">
+          <hr />
+          <div class="sinistra">
+            <h4>Si</h4>
+            <p>Dieta basata sui principi della cronobiologia, la scienza che studia i ritmi biologici.</p>
+          </div>
+          <div class="destra">
+            <h4>No</h4>
+            <p>Dieta basata sui principi della cronobiologia, la scienza che studia i ritmi biologici.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENA -->
+      <div class="container" id="cena">
+        <div class="image colazione">
+        </div>
+        <h3>Alla fine della giornata l'attività metabolica diminuisce.</h3>
+        <div class="consigli">
+          <hr />
+          <div class="sinistra">
+            <h4>Si</h4>
+            <p>Dieta basata sui principi della cronobiologia, la scienza che studia i ritmi biologici.</p>
+          </div>
+          <div class="destra">
+            <h4>No</h4>
+            <p>Dieta basata sui principi della cronobiologia, la scienza che studia i ritmi biologici.</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
