@@ -1,0 +1,16 @@
+@media (min-width: 320px) and (max-width: 640px)  {
+    /* Style adjustments for viewports that meet the condition */
+    .container {
+      width: 100%;
+    }
+    .image {
+      width: 100%;
+      height: 255px;
+    }
+    .image.colazione {
+      width: 70%;
+      margin: 0 auto;
+      background: url('../img/colazione.png') no-repeat;
+      background-size: contain;
+    }
+}
