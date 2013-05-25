@@ -1,0 +1,17 @@
+
+
+/* COMING SOON */
+.comingsoon-container {
+  width: 500px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+.comingsoon-image {
+  width: 400px;
+  height: 255px;
+  background: url('../img/colazione.png') no-repeat;
+  margin: 0 auto;
+}
+.comingsoon-p {
+}
